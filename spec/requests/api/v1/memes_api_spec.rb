@@ -1,12 +1,14 @@
 require 'spec_helper'
 
-describe Api::V1::MemesController do
+describe 'Memes API' do
 
   describe '#show' do
 
     let!(:meme)  { create :meme }
 
-    before { get :show, id: meme.id }
+    before { get api_v1_meme_path(meme) }
+
+    it { expect(response).to be_success }
 
     it 'retrieves specified meme' do
       actual = JSON.parse(response.body)
@@ -29,7 +31,9 @@ describe Api::V1::MemesController do
     let!(:first_meme)  { create :meme }
     let!(:second_meme) { create :meme }
 
-    before { get :index }
+    before { get api_v1_memes_path }
+
+    it { expect(response).to be_success }
 
     it 'retrieves all memes' do
       actual = JSON.parse(response.body)
@@ -77,7 +81,9 @@ describe Api::V1::MemesController do
       }
     end
 
-    before { post :create, params }
+    before { post api_v1_memes_path, params }
+
+    it { expect(response).to be_success }
 
     it 'creates a new meme' do
       actual = Meme.last
@@ -90,7 +96,6 @@ describe Api::V1::MemesController do
 
   end
 
-
   describe '#update' do
     let!(:meme)        { create :meme }
     let(:name)         { '#BizzaroKatie' }
@@ -100,6 +105,8 @@ describe Api::V1::MemesController do
     let(:description)  { 'Katie has a doppleganger' }
 
     let(:params) do
+      {
+        'meme' =>
           {
             'id'          => meme.id.to_s,
             'name'        => name,
@@ -108,11 +115,12 @@ describe Api::V1::MemesController do
             'medium'      => medium,
             'description' => description
           }
+      }
     end
 
-    before do
-      put :update, id: meme.id, meme: params
-    end
+    before { put api_v1_meme_path(meme), params }
+
+    it { expect(response).to be_success }
 
     it 'udpates existing meme' do
       actual = Meme.find(meme.id)
@@ -123,6 +131,16 @@ describe Api::V1::MemesController do
       expect(actual.description).to eq description
     end
 
+  end
+
+  describe '#destroy' do
+    let!(:meme) { create :meme }
+
+    it { expect(response).to be_nil }
+
+    it 'hard-deletes existing meme' do
+      expect { delete api_v1_meme_path(meme.id) }.to change { Meme.count }.by(-1)
+    end
   end
 
 end

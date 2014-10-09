@@ -1,10 +1,10 @@
 module Api
   module V1
     class MemesController < ApplicationController
+      before_action :set_meme, only: [:show, :update, :destroy]
 
       def show
-        meme = Meme.find params[:id]
-        render_json meme
+        render_json @meme
       end
 
       def index
@@ -18,19 +18,27 @@ module Api
       end
 
       def update
-        meme = Meme.find params[:id]
-        meme.update meme_params
-        render_json meme
+        @meme.update meme_params
+        render_json @meme
+      end
+
+      def destroy
+        @meme.destroy
+        render_json @meme
       end
 
       private
 
-      def render_json(data)
-        render json: data
-      end
-
       def meme_params
         params.require(:meme).permit(:name, :started_at, :emoji, :medium, :description)
+      end
+
+      def set_meme
+        @meme = Meme.find params[:id]
+      end
+
+      def render_json(data)
+        render json: data
       end
 
     end
