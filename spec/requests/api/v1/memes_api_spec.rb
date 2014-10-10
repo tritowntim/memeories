@@ -65,7 +65,7 @@ describe 'Memes API' do
     let(:name)        { '#icecream' }
     let(:started_at)  { Date.yesterday }
     let(:emoji)       { false }
-    let(:medium)      { 'offline' }
+    let(:medium)      { 'Offline' }
     let(:description) { 'ice cream runs' }
 
     let!(:params) do
@@ -98,10 +98,10 @@ describe 'Memes API' do
 
   describe '#update' do
     let!(:meme)        { create :meme }
-    let(:name)         { '#BizzaroKatie' }
+    let(:name)         { '#NotKatie' }
     let(:started_at)   { 3.days.ago.beginning_of_day }
     let(:emoji)        { false }
-    let(:medium)       { 'offline' }
+    let(:medium)       { 'Offline' }
     let(:description)  { 'Katie has a doppleganger' }
 
     let(:params) do
