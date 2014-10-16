@@ -129,15 +129,15 @@ App.MemeRoute = Ember.Route.extend({
 `app/assets/javascripts/templates/memes.js.hbs`
 
 ```js
+// Append to existing file contents
+{{outlet}}
+
 // Replace some of existing file contents
 <li>
   {{#link-to 'meme' meme}}
     {{meme.name}}
   {{/link-to}}
 </li>
-
-// Append to existing file contents
-{{outlet}}
 ```
 
 #### 6. Start the Meme Edit Form
@@ -191,6 +191,10 @@ App.MemeRoute = Ember.Route.extend({
 
 ```js
 // Append to existing file contents
+{{#link-to 'meme.edit'}}
+  edit
+{{/link-to}}
+
 {{outlet}}
 ```
 
@@ -234,17 +238,6 @@ App.MemeEditController = Ember.ObjectController.extend({
 ```
 #### 8. Hide Edit Link During Editing
 
-`app/assets/javascripts/templates/meme.js.hbs`
-
-```js
-// Replace some of the existing file contents
-{{#unless editingMode}}
-  {{#link-to 'meme.edit'}}
-    edit
-  {{/link-to}}
-{{/unless}}
-```
-
 `app/assets/javascripts/controllers/meme.js`
 
 ```js
@@ -264,6 +257,17 @@ App.MemeEditRoute = Ember.Route.extend({
   activate: function() { this.controllerFor('meme').beginEditing(); },
   deactivate: function() { this.controllerFor('meme').endEditing(); }
 });
+```
+
+`app/assets/javascripts/templates/meme.js.hbs`
+
+```js
+// Replace some of the existing file contents
+{{#unless editingMode}}
+  {{#link-to 'meme.edit'}}
+    edit
+  {{/link-to}}
+{{/unless}}
 ```
 
 #### 9. Emoji Support
