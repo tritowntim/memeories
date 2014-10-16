@@ -12,6 +12,7 @@
 1. `rake db:reset`
 1. `rspec`, all specs should pass
 1. `rails s`
+1. Install Ember Inspector dev tools addon for either [Chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
 #### What's In Here
 
