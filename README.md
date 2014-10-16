@@ -30,3 +30,6 @@ A blank home page for building an Ember app
 - `ember-rails` has [already been configured](https://github.com/tritowntim/memeories/blob/master/config/application.rb#L31) to create an Ember app name of `App` instead of the rails app name 
 - Turbolinks has been disabled
 - Coffeescript has been disabled
+
+#### References
+- [Ember-in-Rails tutorial](http://ember.vicramon.com/)
