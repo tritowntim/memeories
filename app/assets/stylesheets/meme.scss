@@ -1,0 +1,57 @@
+* {
+  font-family: Helvetica;
+}
+
+li {
+  margin: 10px 0;
+}
+
+a {
+  padding: 4px;
+}
+
+a.active {
+  background-color: #F3F781;
+}
+
+a:visited {
+  color: blue;
+}
+
+div#container {
+  width: 100%;
+}
+
+div.memes {
+  float: left;
+  width: 20%;
+}
+
+div.meme, form.meme-edit {
+  float: right;
+  width: 80%;
+  margin: 20px 0;
+  > div {
+    width: 60%;
+    > div {
+      display: inline;
+      margin: 6px 0;
+      &:first-child {
+        float: left;
+        width: 20%;
+        color: #585858;
+      }
+      &:last-child {
+        float: right;
+        width: 80%;
+      }
+      label {
+        height: 1.2em;
+      }
+      input[type=text] {
+        width: 80%;
+        font-size: smaller;
+      }
+    }
+  }
+}

@@ -63,24 +63,27 @@ App.MemesRoute = Ember.Route.extend({
 `app/assets/javascripts/templates/memes.js.hbs`
 
 ```html
-<ul>
-  {{#each meme in model}}
-    <li>
-      {{#link-to 'meme' meme}}
-        {{meme.name}}
-      {{/link-to}}
-    </li>
-  {{/each}}
-</ul>
+<div class="memes">
+  <ul>
+    {{#each meme in model}}
+      <li>
+        {{#link-to 'meme' meme}}
+          {{meme.name}}
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
 ```
 
 `app/assets/javascripts/templates/application.js.hbs`
 
 ```js
 // Append to existing file contents
-{{outlet}}
+<div id="container">
+  {{outlet}}
+</div>
 ```
-
 
 
 #### 5. View Meme Details
@@ -104,26 +107,25 @@ App.MemeRoute = Ember.Route.extend({
 ```
 
 `app/assets/javascripts/templates/meme.js.hbs`
-#### TODO: formatting
 ```html
-<table>
-  <tr>
-    <td>name</td>
-    <td>{{name}}</td>
-  </tr>
-  <tr>
-    <td>funny</td>
-    <td>{{funny}}</td>
-  </tr>
-  <tr>
-    <td>description</td>
-    <td>{{description}}</td>
-  </tr>
-  <tr>
-    <td>emoji</td>
-    <td>{{emojiPattern}}</td>
-  </tr>
-</table>
+<div class="meme">
+  <div>
+    <div>Meme Name</div>
+    <div>{{name}}</div>
+  </div>
+  <div>
+    <div>Funny</div>
+    <div>{{funny}}</div>
+  </div>
+  <div>
+    <div>Description</div>
+    <div>{{description}}</div>
+  </div>
+  <div>
+    <div>Emoji</div>
+    <div>{{emojiPattern}}</div>
+  </div>
+</div>
 ```
 
 `app/assets/javascripts/templates/memes.js.hbs`
@@ -153,28 +155,26 @@ App.MemeRoute = Ember.Route.extend({
 `app/assets/javascripts/templates/meme/edit.js.hbs`
 
 ```html
-<form>
+<form class="meme-edit">
   <div>
-    <div>
-      <label>Name</label>
-      <td>{{input value=name}}</td>
-    </div>
-    <div>
-      <label>Description</label>
-      <td>{{input value=description}}</td>
-    </div>
-    <div>
-      <label>Funny</label>
-      <td>{{input type="checkbox" checked=funny}}</td>
-    </div>
-    <div>
-      <label>Emoji</label>
-      <td>{{input value=emojiPattern}}</td>
-    </div>
-    <div>
-      <input type="submit" value="save" />
-      <input type="button" value="cancel" />
-    </div>
+    <div><label>Name</label></div>
+    <div>{{input value=name}}</div>
+  </div>
+  <div>
+    <div><label>Description</label></div>
+    <div>{{input value=description}}</div>
+  </div>
+  <div>
+    <div><label>Funny</label></div>
+    <div>{{input type="checkbox" checked=funny}}</div>
+  </div>
+  <div>
+    <div><label>Emoji</label></div>
+    <div>{{input value=emojiPattern}}</div>
+  </div>
+  <div>
+    <input type="submit" value="save" />
+    <input type="button" value="cancel" />
   </div>
 </form>
 ```
@@ -274,8 +274,8 @@ Ember.Handlebars.helper('format-emoji', function(text, options) {
 
 ```js
   // Replace some of the existing file contents
-  <tr>
-    <td>emoji</td>
-    <td>{{format-emoji emojiPattern}}</td>
-  </tr>
+  <div>
+    <div>Emoji</div>
+    <div>{{format-emoji emojiPattern}}</div>
+  </div>  
 ```
