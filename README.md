@@ -6,6 +6,7 @@
 #### Installation
 
 1. `git clone https://github.com/tritowntim/memeories.git`
+1. `cd memeories`
 1. `Gemfile` is set to Ruby 2.1.3, **feel free to change to an already installed version** to avoid Ruby install time
 1. `bundle`
 1. `rake db:reset`
@@ -15,9 +16,9 @@
 #### What's In Here
 
 An API for creating, reading, updating, and deleting memes
-  - http://localhost:3000/api/v1/memes
+  - [http://localhost:3000/api/v1/memes](http://localhost:3000/api/v1/memes)
     - Returns ten memes created by seed data
-  - http://localhost:3000/api/v1/memes/1
+  - [http://localhost:3000/api/v1/memes/1](http://localhost:3000/api/v1/memes/1)
     - Returns individual memes
 
 A blank home page for building an Ember app
