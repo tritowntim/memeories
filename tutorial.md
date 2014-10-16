@@ -67,9 +67,7 @@ App.MemesRoute = Ember.Route.extend({
   <ul>
     {{#each meme in model}}
       <li>
-        {{#link-to 'meme' meme}}
-          {{meme.name}}
-        {{/link-to}}
+        {{meme.name}}
       </li>
     {{/each}}
   </ul>
@@ -131,6 +129,13 @@ App.MemeRoute = Ember.Route.extend({
 `app/assets/javascripts/templates/memes.js.hbs`
 
 ```js
+// Replace some of existing file contents
+<li>
+  {{#link-to 'meme' meme}}
+    {{meme.name}}
+  {{/link-to}}
+</li>
+
 // Append to existing file contents
 {{outlet}}
 ```
