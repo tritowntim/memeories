@@ -1,3 +1,3 @@
 class MemeSerializer < ActiveModel::Serializer
-  attributes :id, :name, :started_at, :emoji, :medium, :description
+  attributes :id, :name, :funny, :emoji_pattern, :description
 end

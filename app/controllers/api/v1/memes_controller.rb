@@ -30,7 +30,7 @@ module Api
       private
 
       def meme_params
-        params.require(:meme).permit(:name, :started_at, :emoji, :medium, :description)
+        params.require(:meme).permit(:name, :funny, :emoji_pattern, :description)
       end
 
       def set_meme

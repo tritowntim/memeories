@@ -18,10 +18,9 @@ ActiveRecord::Schema.define(version: 20141007113929) do
 
   create_table "memes", force: true do |t|
     t.text     "name"
-    t.date     "started_at"
-    t.boolean  "emoji"
-    t.text     "medium"
+    t.boolean  "funny"
     t.text     "description"
+    t.text     "emoji_pattern"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
