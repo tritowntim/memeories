@@ -2,10 +2,9 @@ class CreateMemes < ActiveRecord::Migration
   def change
     create_table :memes do |t|
       t.text :name
-      t.date :started_at
-      t.boolean :emoji
-      t.text :medium
+      t.boolean :funny
       t.text :description
+      t.text :emoji_pattern
 
       t.timestamps
     end

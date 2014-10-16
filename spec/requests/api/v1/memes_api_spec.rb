@@ -14,12 +14,11 @@ describe 'Memes API' do
       actual = JSON.parse(response.body)
       expected = {
         'meme' => {
-          'id'          => meme.id,
-          'name'        => meme.name,
-          'started_at'  => meme.started_at.to_s,
-          'emoji'       => meme.emoji,
-          'medium'      => meme.medium,
-          'description' => meme.description
+          'id'            => meme.id,
+          'name'          => meme.name,
+          'funny'         => meme.funny,
+          'emoji_pattern' => meme.emoji_pattern,
+          'description'   => meme.description
         }
       }
       expect(actual).to eq expected
@@ -40,20 +39,18 @@ describe 'Memes API' do
       expected = {
         'memes' => [
           {
-            'id'          => first_meme.id,
-            'name'        => first_meme.name,
-            'started_at'  => first_meme.started_at.to_s,
-            'emoji'       => first_meme.emoji,
-            'medium'      => first_meme.medium,
-            'description' => first_meme.description
+            'id'            => first_meme.id,
+            'name'          => first_meme.name,
+            'emoji_pattern' => first_meme.emoji_pattern,
+            'funny'         => first_meme.funny,
+            'description'   => first_meme.description
           },
           {
-            'id'          => second_meme.id,
-            'name'        => second_meme.name,
-            'started_at'  => second_meme.started_at.to_s,
-            'emoji'       => second_meme.emoji,
-            'medium'      => second_meme.medium,
-            'description' => second_meme.description
+            'id'            => second_meme.id,
+            'name'          => second_meme.name,
+            'emoji_pattern' => second_meme.emoji_pattern,
+            'funny'         => second_meme.funny,
+            'description'   => second_meme.description
           }
         ]
       }
@@ -62,21 +59,19 @@ describe 'Memes API' do
   end
 
   describe '#create' do
-    let(:name)        { '#icecream' }
-    let(:started_at)  { Date.yesterday }
-    let(:emoji)       { false }
-    let(:medium)      { 'Offline' }
-    let(:description) { 'ice cream runs' }
+    let(:name)          { '#icecream' }
+    let(:funny)         { false }
+    let(:emoji_pattern) { ':ice_cream:' }
+    let(:description)   { 'ice cream runs' }
 
     let!(:params) do
       {
         'meme' =>
           {
-            'name'        => name,
-            'started_at'  => started_at.to_s,
-            'emoji'       => emoji,
-            'medium'      => medium,
-            'description' => description
+            'name'          => name,
+            'emoji_pattern' => emoji_pattern,
+            'funny'         => funny,
+            'description'   => description
           }
       }
     end
@@ -87,33 +82,30 @@ describe 'Memes API' do
 
     it 'creates a new meme' do
       actual = Meme.last
-      expect(actual.name).to        eq name
-      expect(actual.started_at).to  eq started_at
-      expect(actual.emoji).to       eq emoji
-      expect(actual.medium).to      eq medium
-      expect(actual.description).to eq description
+      expect(actual.name).to          eq name
+      expect(actual.funny).to         eq funny
+      expect(actual.emoji_pattern).to eq emoji_pattern
+      expect(actual.description).to   eq description
     end
 
   end
 
   describe '#update' do
-    let!(:meme)        { create :meme }
-    let(:name)         { '#NotKatie' }
-    let(:started_at)   { 3.days.ago.beginning_of_day }
-    let(:emoji)        { false }
-    let(:medium)       { 'Offline' }
-    let(:description)  { 'Katie has a doppleganger' }
+    let!(:meme)         { create :meme }
+    let(:name)          { 'NotKatie' }
+    let(:emoji_pattern) { ':woman:' }
+    let(:funny)         { false }
+    let(:description)   { 'Katie has a doppleganger' }
 
     let(:params) do
       {
         'meme' =>
           {
-            'id'          => meme.id.to_s,
-            'name'        => name,
-            'started_at'  => started_at.to_s,
-            'emoji'       => emoji,
-            'medium'      => medium,
-            'description' => description
+            'id'            => meme.id.to_s,
+            'name'          => name,
+            'emoji_pattern' => emoji_pattern,
+            'funny'         => funny,
+            'description'   => description
           }
       }
     end
@@ -124,11 +116,10 @@ describe 'Memes API' do
 
     it 'udpates existing meme' do
       actual = Meme.find(meme.id)
-      expect(actual.name).to        eq name
-      expect(actual.started_at).to  eq started_at
-      expect(actual.emoji).to       eq emoji
-      expect(actual.medium).to      eq medium
-      expect(actual.description).to eq description
+      expect(actual.name).to          eq name
+      expect(actual.funny).to         eq funny
+      expect(actual.emoji_pattern).to eq emoji_pattern
+      expect(actual.description).to   eq description
     end
 
   end

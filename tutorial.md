@@ -17,18 +17,17 @@ rails g ember:bootstrap
 #### TODO: change columns
 
 ```shell
-rails g ember:model Meme name:text started_at:date emoji:boolean medium:text description:text
+rails g ember:model Meme name:text funny:boolean description:text emoji_pattern:text
 ```
 
 ...generates...
 
 ```js
 App.Meme = DS.Model.extend({
-  name        : DS.attr('string'),
-  startedAt   : DS.attr('date'),
-  emoji       : DS.attr('boolean'),
-  medium      : DS.attr('string'),
-  description : DS.attr('string')
+  name         : DS.attr('string'),
+  funny        : DS.attr('boolean'),
+  description  : DS.attr('string'),
+  emojiPattern : DS.attr('string')
 });
 ```
 
@@ -95,7 +94,7 @@ App.MemesRoute = Ember.Route.extend({
     this.resource('meme', { path: ':id' });
   });
 ```
-`app/assets/javascript/routes/meme.js`
+`app/assets/javascripts/routes/meme.js`
 
 ```js
 App.MemeRoute = Ember.Route.extend({
@@ -105,7 +104,7 @@ App.MemeRoute = Ember.Route.extend({
 });
 ```
 
-`app/assets/javascript/templates/meme.js.hbs`
+`app/assets/javascripts/templates/meme.js.hbs`
 #### TODO: columns, formatting
 ```html
 <table>
@@ -114,25 +113,21 @@ App.MemeRoute = Ember.Route.extend({
     <td>{{name}}</td>
   </tr>
   <tr>
-    <td>startedAt</td>
-    <td>{{startedAt}}</td>
-  </tr>
-  <tr>
-    <td>emoji</td>
-    <td>{{emoji}}</td>
-  </tr>
-  <tr>
-    <td>medium</td>
-    <td>{{medium}}</td>
+    <td>funny</td>
+    <td>{{funny}}</td>
   </tr>
   <tr>
     <td>description</td>
     <td>{{description}}</td>
   </tr>
+  <tr>
+    <td>emoji</td>
+    <td>{{emojiPattern}}</td>
+  </tr>
 </table>
 ```
 
-`app/assets/javascript/templates/memes.js.hbs`
+`app/assets/javascripts/templates/memes.js.hbs`
 
 ```js
 // Append to existing file contents
@@ -141,7 +136,7 @@ App.MemeRoute = Ember.Route.extend({
 
 #### 6. Start the Meme Edit Form
 
-`app/assets/javascript/router.js`
+`app/assets/javascripts/router.js`
 
 ```js
     // Replace some of existing file content
@@ -150,13 +145,13 @@ App.MemeRoute = Ember.Route.extend({
     });
 ```
 
-`app/assets/javascript/routes/meme_edit.js`
+`app/assets/javascripts/routes/meme_edit.js`
 
 ```js
   App.MemeEditRoute = Ember.Route.extend({});
 ```
 
-`app/assets/javascript/templates/meme/edit.js.hbs`
+`app/assets/javascripts/templates/meme/edit.js.hbs`
 
 ```html
 <form>
@@ -166,20 +161,16 @@ App.MemeRoute = Ember.Route.extend({
       <td>{{input value=name}}</td>
     </div>
     <div>
-      <label>Started At</label>
-      <td>{{input value=startedAt}}</td>
+      <label>Description</label>
+      <td>{{input value=description}}</td>
+    </div>
+    <div>
+      <label>Funny</label>
+      <td>{{input type="checkbox" checked=funny}}</td>
     </div>
     <div>
       <label>Emoji</label>
-      <td>{{input value=emoji}}</td>
-    </div>
-    <div>
-      <label>Medium</label>
-      <td>{{input value=medium}}</td>
-    </div>
-    <div>
-      <label>Description</label>
-      <td>{{input value=description}}</td>
+      <td>{{input value=emojiPattern}}</td>
     </div>
     <div>
       <input type="submit" value="save" />
@@ -189,7 +180,7 @@ App.MemeRoute = Ember.Route.extend({
 </form>
 ```
 
-`app/assets/javascript/templates/meme.js.hbs`
+`app/assets/javascripts/templates/meme.js.hbs`
 
 ```js
 // Append to existing file contents
@@ -198,7 +189,7 @@ App.MemeRoute = Ember.Route.extend({
 
 #### 7. Save and Cancel Meme Edits
 
-`app/assets/javascript/templates/meme/edit.js.hbs`
+`app/assets/javascripts/templates/meme/edit.js.hbs`
 
 ```js
     // Replace some of the existing file contents
@@ -208,7 +199,7 @@ App.MemeRoute = Ember.Route.extend({
     </div>
 ```
 
-`app/assets/javascript/controllers/meme_edit.js`
+`app/assets/javascripts/controllers/meme_edit.js`
 
 ```js
 App.MemeEditController = Ember.ObjectController.extend({
@@ -248,7 +239,7 @@ App.MemeEditController = Ember.ObjectController.extend({
 
 ```js
 App.MemeController = Ember.ObjectController.extend({
-  inEditingMode: false,
+  editingMode: false,
 
   beginEditing: function() { this.set('editingMode', true); },
   endEditing: function() { this.set('editingMode', false); },
@@ -278,14 +269,14 @@ Ember.Handlebars.helper('format-emoji', function(text, options) {
   // Use emoji-images.js library
   var emojified = emoji(text, '/assets/emoji', 20);
   return new Ember.Handlebars.SafeString(emojified);
-})
+});
 ```
-`app/assets/javascript/templates/meme.js.hbs`
+`app/assets/javascripts/templates/meme.js.hbs`
 
 ```js
   // Replace some of the existing file contents
   <tr>
-    <td>description</td>
-    <td>{{format-emoji description}}</td>
+    <td>emoji</td>
+    <td>{{format-emoji emojiPattern}}</td>
   </tr>
 ```
