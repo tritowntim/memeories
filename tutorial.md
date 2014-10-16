@@ -173,8 +173,11 @@ App.MemeRoute = Ember.Route.extend({
     <div>{{input value=emojiPattern}}</div>
   </div>
   <div>
-    <input type="submit" value="save" />
-    <input type="button" value="cancel" />
+    <div></div>
+    <div>
+      <input type="submit" value="save" />
+      <input type="button" value="cancel" />
+    </div>
   </div>
 </form>
 ```
@@ -193,8 +196,11 @@ App.MemeRoute = Ember.Route.extend({
 ```js
     // Replace some of the existing file contents
     <div>
-      <input type="submit" value="save" {{action "save"}} />
-      <input type="button" value="cancel" {{action "cancel"}} />
+      <div></div>
+      <div>
+        <input type="submit" value="save" {{action "save"}} />
+        <input type="button" value="cancel" {{action "cancel"}} />
+      </div>
     </div>
 ```
 
