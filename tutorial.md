@@ -14,7 +14,6 @@ rails g ember:bootstrap
 ```
 
 #### 3. Define the Meme Model for Ember
-#### TODO: change columns
 
 ```shell
 rails g ember:model Meme name:text funny:boolean description:text emoji_pattern:text
@@ -105,7 +104,7 @@ App.MemeRoute = Ember.Route.extend({
 ```
 
 `app/assets/javascripts/templates/meme.js.hbs`
-#### TODO: columns, formatting
+#### TODO: formatting
 ```html
 <table>
   <tr>
