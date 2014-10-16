@@ -7,7 +7,7 @@
 
 1. `git clone https://github.com/tritowntim/memeories.git`
 1. `cd memeories`
-1. `Gemfile` is set to Ruby 2.1.3, **feel free to change to an already installed version** to avoid Ruby install time
+1. `Gemfile` is set to Ruby 2.1.2, **feel free to change to a version of Ruby already installed on your machine** to avoid Ruby install time
 1. `bundle`
 1. `rake db:reset`
 1. `rspec`, all specs should pass
