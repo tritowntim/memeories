@@ -22,7 +22,7 @@ An API for creating, reading, updating, and deleting memes
     - Returns individual memes
 
 A blank home page for building an Ember app
-  - http://localhost:3000
+  - [http://localhost:3000](http://localhost:3000)
 
 #### Implementation
 
