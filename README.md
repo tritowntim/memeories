@@ -27,5 +27,6 @@ A blank home page for building an Ember app
 #### Implementation
 
 - This app uses the `ember-rails` gem, which depends upon the `active_model_serializers` gem for creating JSON APIs in the format necessary for Ember Data.
+- `ember-rails` has [already been configured](https://github.com/tritowntim/memeories/blob/master/config/application.rb#L31) to create an Ember app name of `App` instead of the rails app name 
 - Turbolinks has been disabled
 - Coffeescript has been disabled
