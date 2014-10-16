@@ -1,11 +1,11 @@
 
-### 1. Bootstrap the Ember App
+#### 1. Bootstrap the Ember App
 
 ```shell
 rails g ember:bootstrap
 ```
 
-### 2. Create An Application Template
+#### 2. Create An Application Template
 
 `app/assets/javascripts/templates/application.js.hbs`
 
@@ -13,11 +13,11 @@ rails g ember:bootstrap
 <h1>Memeories</h1>
 ```
 
-### 3. Define the Meme Model for Ember
-### TODO: change columns
+#### 3. Define the Meme Model for Ember
+#### TODO: change columns
 
 ```shell
-rails g ember:model Meme name:text started_at:date emoji:boolean medium:text description:text`
+rails g ember:model Meme name:text started_at:date emoji:boolean medium:text description:text
 ```
 
 ...generates...
@@ -32,7 +32,7 @@ App.Meme = DS.Model.extend({
 });
 ```
 
-### 3.5 Configure the API Namespace for Ember Data
+#### 3.5 Configure the API Namespace for Ember Data
 
 `app/assets/javascripts/store.js`
 
@@ -41,7 +41,7 @@ App.Meme = DS.Model.extend({
 DS.RESTAdapter.reopen({ namespace: 'api/v1' });
 ```
 
-### 4. List All the Memes
+#### 4. List All the Memes
 
 `app/assets/javascripts/router.js`
 
@@ -85,7 +85,7 @@ App.MemesRoute = Ember.Route.extend({
 
 
 
-### 5. View Meme Details
+#### 5. View Meme Details
 
 `app/assets/javascripts/router.js`
 
@@ -106,7 +106,7 @@ App.MemeRoute = Ember.Route.extend({
 ```
 
 `app/assets/javascript/templates/meme.js.hbs`
-### TODO: columns, formatting
+#### TODO: columns, formatting
 ```html
 <table>
   <tr>
@@ -139,7 +139,7 @@ App.MemeRoute = Ember.Route.extend({
 {{outlet}}
 ```
 
-### 6. Start the Meme Edit Form
+#### 6. Start the Meme Edit Form
 
 `app/assets/javascript/router.js`
 
@@ -196,7 +196,7 @@ App.MemeRoute = Ember.Route.extend({
 {{outlet}}
 ```
 
-### 7. Save and Cancel Meme Edits
+#### 7. Save and Cancel Meme Edits
 
 `app/assets/javascript/templates/meme/edit.js.hbs`
 
@@ -231,7 +231,7 @@ App.MemeEditController = Ember.ObjectController.extend({
 
 });
 ```
-### 8. Hide Edit Link During Editing
+#### 8. Hide Edit Link During Editing
 
 `app/assets/javascripts/templates/meme.js.hbs`
 
@@ -265,7 +265,7 @@ App.MemeEditRoute = Ember.Route.extend({
 });
 ```
 
-### 9. Emoji Support
+#### 9. Emoji Support
 
 `app/assets/javascripts/helpers/emoji.js.erb`
 
