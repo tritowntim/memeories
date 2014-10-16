@@ -1,1 +1,1 @@
-memeory
+memeories
