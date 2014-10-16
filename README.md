@@ -1,1 +1,30 @@
-memeories
+# memeories
+#### _remember your memes..._
+
+... and learn Ember.js
+
+#### Installation
+
+1. `git clone https://github.com/tritowntim/memeories.git`
+1. `Gemfile` is set to Ruby 2.1.3, **feel free to change to an already installed version** to avoid Ruby install time
+1. `bundle`
+1. `rake db:reset`
+1. `rspec`, all specs should pass
+1. `rails s`
+
+#### What's In Here
+
+An API for creating, reading, updating, and deleting memes
+  - http://localhost:3000/api/v1/memes
+    - Returns ten memes created by seed data
+  - http://localhost:3000/api/v1/memes/1
+    - Returns individual memes
+
+A blank home page for building an Ember app
+  - http://localhost:3000
+
+#### Implementation
+
+- This app uses the `ember-rails` gem, which depends upon the `active_model_serializers` gem for creating JSON APIs in the format necessary for Ember Data.
+- Turbolinks has been disabled
+- Coffeescript has been disabled
