@@ -1,0 +1,25 @@
+<form class="meme-edit">
+  <div>
+    <div><label>Name</label></div>
+    <div>{{input value=name}}</div>
+  </div>
+  <div>
+    <div><label>Description</label></div>
+    <div>{{input value=description}}</div>
+  </div>
+  <div>
+    <div><label>Funny</label></div>
+    <div>{{input type="checkbox" checked=funny}}</div>
+  </div>
+  <div>
+    <div><label>Emoji</label></div>
+    <div>{{input value=emojiPattern}}</div>
+  </div>
+  <div>
+    <div></div>
+    <div>
+      <input type="submit" value="save" {{action 'save'}} />
+      <input type="button" value="cancel" {{action 'cancel'}} />
+    </div>
+  </div>
+</form>

@@ -1,0 +1,9 @@
+// Note: helper name must include hyphen
+Ember.Handlebars.helper('format-emoji', function(text, options) {
+
+  if (Ember.isBlank(text)) { return null; }
+
+  // Use emoji-images.js library
+  var emojified = emoji(text, '/assets/emoji', 20);
+  return new Ember.Handlebars.SafeString(emojified);
+});

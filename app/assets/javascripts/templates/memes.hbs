@@ -1,0 +1,13 @@
+<div class="memes">
+  <ul>
+    {{#each meme in model}}
+      <li>
+        {{#link-to 'meme' meme}}
+          {{meme.name}}
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+{{outlet}}

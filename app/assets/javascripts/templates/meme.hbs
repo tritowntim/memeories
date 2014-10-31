@@ -1,0 +1,26 @@
+<div class="meme">
+  <div>
+    <div>Meme Name</div>
+    <div>{{name}}</div>
+  </div>
+  <div>
+    <div>Funny</div>
+    <div>{{funny}}</div>
+  </div>
+  <div>
+    <div>Description</div>
+    <div>{{description}}</div>
+  </div>
+  <div>
+    <div>Emoji</div>
+    <div>{{format-emoji emojiPattern}}</div>
+  </div>
+</div>
+
+{{#unless editingMode}}
+  {{#link-to 'meme.edit'}}
+    edit
+  {{/link-to}}
+{{/unless}}
+
+{{outlet}}
